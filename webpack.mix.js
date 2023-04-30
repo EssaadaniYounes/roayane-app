@@ -10,8 +10,11 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/js/app.js', 'public/js')
+const tailwindcss = require('tailwindcss');
+const postcss7 = require('postcss7');
+mix.disableNotifications().js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+        tailwindcss(),
+
+    ]).copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
+;
